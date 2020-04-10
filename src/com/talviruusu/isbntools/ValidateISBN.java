@@ -9,8 +9,15 @@ public class ValidateISBN {
 
         for (int i = 0;i < 10;i++) {
             char currentChar = isbn.charAt(i);
-            if (!Character.isDigit(currentChar)) throw  new NumberFormatException("All values on ISBN must be digits");
-            total += currentChar * (10 - i);
+            if (!Character.isDigit(currentChar)) {
+                if (i == 9 && currentChar == 'X') {
+                    total += 10;
+                } else {
+                    throw  new NumberFormatException("All values on ISBN must be numeric digits");
+                }
+            } else {
+                total += Character.getNumericValue(currentChar) * (10 - i);
+            }
         }
 
         if (total % 11 == 0.0) {
