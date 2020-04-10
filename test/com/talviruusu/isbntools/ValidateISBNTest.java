@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class ValidateISBNTest {
 
     @Test
-    public void checkAValid10DigitsISBN() {
+    public void checkAValidShortISBN() {
         ValidateISBN validateISBN = new ValidateISBN();
         boolean result =  validateISBN.checkISBN("0140449116");
         assertTrue("first value", result);
@@ -16,21 +16,21 @@ public class ValidateISBNTest {
     }
 
     @Test
-    public void TenDigitsISBNNumbersEndingInAnXAreValid() {
+    public void ShortISBNNumbersEndingInAnXAreValid() {
         ValidateISBN validateISBN = new ValidateISBN();
         boolean result =  validateISBN.checkISBN("012000030X");
         assertTrue(result);
     }
 
     @Test
-    public void checkAnInvalid10DigitsISBN() {
+    public void checkAnInvalidShortISBN() {
         ValidateISBN validateISBN = new ValidateISBN();
         boolean result = validateISBN.checkISBN("0140449117");
         assertFalse(result);
     }
 
     @Test
-    public void checkAValid13DigitsISBN() {
+    public void checkAValidLongISBN() {
         ValidateISBN validateISBN = new ValidateISBN();
         boolean result = validateISBN.checkISBN("9781644450000");
         assertTrue("first value", result);
@@ -39,7 +39,7 @@ public class ValidateISBNTest {
     }
 
     @Test
-    public void checkAnInvalid13DigitsISBN() {
+    public void checkAnInvalidLongISBN() {
         ValidateISBN validateISBN = new ValidateISBN();
         boolean result = validateISBN.checkISBN("9781644450006");
         assertFalse(result);
