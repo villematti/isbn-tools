@@ -52,8 +52,14 @@ public class ValidateISBNTest {
     }
 
     @Test(expected = NumberFormatException.class)
-    public void nonNumericISBNAreNotAllowed() {
+    public void nonNumericShortISBNAreNotAllowed() {
         ValidateISBN validateISBN = new ValidateISBN();
-        validateISBN.checkISBN("helloworld");
+        validateISBN.checkISBN("HelloWorld");
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void nonNumericLongISBNAreNotAllowed() {
+        ValidateISBN validateISBN = new ValidateISBN();
+        validateISBN.checkISBN("HelloWorldABC");
     }
 }

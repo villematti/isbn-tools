@@ -24,7 +24,7 @@ public class ValidateISBN {
                 if (i == 9 && currentChar == 'X') {
                     total += 10;
                 } else {
-                    throw new NumberFormatException("All values on ISBN must be numeric digits");
+                    throw new NumberFormatException("Only last digit can be a non-numeric digit in short ISBN");
                 }
             } else {
                 total += Character.getNumericValue(currentChar) * (SHORT_ISBN_LENGTH - i);
@@ -39,6 +39,9 @@ public class ValidateISBN {
 
         for (int i = 0; i < LONG_ISBN_LENGTH; i++) {
             char currentChar = isbn.charAt(i);
+
+            if (!Character.isDigit(currentChar)) throw new NumberFormatException("All values on ISBN must be numeric digits in long ISBN");
+
             if (i % 2 == 0) {
                 total += Character.getNumericValue(currentChar);
             } else {
